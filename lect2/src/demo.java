@@ -14,6 +14,17 @@ public class demo {
     private static void printPrimes(int limit) {
         /*{ For every integer, x, between 2 and LIMIT, print
             isPrime(x), 10 to a line.} */
+        int np = 0;
+        for (int i = 0; i < limit; i++) {
+            if (isPrime(i)) {
+                System.out.print(i + " ");
+                np += 1;
+                if (np % 10 == 0)
+                    System.out.println();
+            }
+        }
+        if (np % 10 != 0)
+            System.out.println();
     }
 
     /* True iff X is prime */
@@ -25,7 +36,8 @@ public class demo {
     }
 
     private static boolean isDivisible(int x, int k) {
-        if (k >= x)
+        int limit = (int) Math.round(Math.sqrt(x));
+        if (k >= limit)
             return false;
         else if (x % k == 0)
             return true;
