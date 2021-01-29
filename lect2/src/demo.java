@@ -18,6 +18,21 @@ public class demo {
 
     /* True iff X is prime */
     private static boolean isPrime(int x) {
-        return /*(X is prime)*/
+        if (x <= 1)
+            return false;
+        else
+            return !isDivisible(x, 2); //"!" means "not"
     }
+    /* True iff X is divisible by any positive number >=K and < X，
+    *  given K > 1
+    * */
+    private static boolean isDivisible(int x, int k) {
+        if (k >= x)
+            return false;
+        else if (x % k == 0)
+            return true;
+        else //if (k < x && x % k != 0)
+        return isDivisible(x, k+1);
+    }
+
 }
