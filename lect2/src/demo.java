@@ -21,18 +21,37 @@ public class demo {
         if (x <= 1)
             return false;
         else
-            return !isDivisible(x, 2); //"!" means "not"
+            return !isDivisible(x, 2);
     }
-    /* True iff X is divisible by any positive number >=K and < X，
-    *  given K > 1
-    * */
+
     private static boolean isDivisible(int x, int k) {
         if (k >= x)
             return false;
         else if (x % k == 0)
             return true;
-        else //if (k < x && x % k != 0)
-        return isDivisible(x, k+1);
+        else
+            return isDivisible(x, k + 1);
+
+        /*while (k < x) {
+            if (x % k == 0)
+                return true;
+                k = k + 1;
+        }
+        return false;*/
+
+        /*int k1 = k;
+        while (k1 < x) {
+            if (x % k1 == 0)
+                return true;
+            k1 += 1;
+        }
+        return false;*/
+
+        /*for (int k1 = k; k1 < x; k++) {
+            if (x % k1 == 0)
+                return true;
+        }
+        return false;*/
     }
 
 }
