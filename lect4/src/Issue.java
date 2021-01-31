@@ -13,30 +13,19 @@ public class Issue {
     }
 
     /*List Deletion*/
-    /*Non-destructive 递归版本*/
-    /*static IntList removeAll(IntList L, int n) {
-        if (L == null)
+    /*destructive 递归版本*/
+    /*这个递归我是这样理解的，如果此节点是要删除的（值是x），就直接把他的子节点拿去递归，这个就不要了
+    * 因为返回结果是子节点的，跟这个节点再没有关系
+    * 而如果这个节点不是，那就还是用L标记，最后继续返回它*/
+    static IntList dRemoveALL(IntList L, int x) {
+        if (L == null) {
             return null;
-        else if (L.head == n) {
-            return removeAll(L.tail, n);
+        }else if (L.head == x) {
+            return dRemoveALL(L.tail, x);
+        }else {
+            L.tail = dRemoveALL(L.tail, x);
+            return L;
         }
-        else return new IntList(L.head, removeAll(L.tail, n));
-    }*/
-
-    /*Iterative Non-destructive 迭代版本*/
-    static IntList removeAll(IntList L, int n) {
-        IntList result = null, last = null;//last是新表的工作指针，而result用来标记新表头部
-        for ( ; L != null; L = L.tail) { //L是工作指针
-            if (L.head == n) {
-                continue;
-            }else if (last == null) {
-                result = last = new IntList(L.head, null); //创造头部
-            }else {
-                last.tail = new IntList(L.head, null);
-                last = last.tail;
-            }
-        }
-        return result;
     }
 }
 
