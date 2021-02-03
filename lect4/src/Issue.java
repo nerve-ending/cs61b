@@ -1,16 +1,13 @@
+import java.io.PrintStream;
+
 /*
 * final example
 * In Java,the keyword final in variable declaration means that
 * the variable's value may not be changed after the variable is initialized
 * */
-
 public class Issue {
 
-    private final IntList aList = new IntList(0, null);
 
-    public void modify(int k) {
-        this.aList.head = k;
-    }
 
     /*List Deletion*/
     /*destructive 递归版本*/
@@ -56,15 +53,10 @@ public class Issue {
         return result;
     }
 
-}
-
-class IntList {
-    public int head;
-    public IntList tail;
-
-    public IntList(int head, IntList tail) {
-        this.head = head;
-        this.tail = tail;
+    public static void main(String[] args) {
+        IntList L = IntList.list(1, 3, 4, 5, 1, 3);
+        IntList.printList(Issue.dRemoveAll(L, 3));
     }
 }
+
 
